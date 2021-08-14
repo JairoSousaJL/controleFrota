@@ -26,7 +26,6 @@ Route::group(['middleware' => 'admin'], function(){
         Route::get('/consultar/veiculo', [\App\Http\Controllers\VeiculoController::class, 'index'])->name('veiculos');
         Route::get('/veiculo/{codigo}', [\App\Http\Controllers\VeiculoController::class, 'show'])->name('showVeiculo');
         Route::put('/editar/veiculo/{codigo}', [\App\Http\Controllers\VeiculoController::class, 'edit'])->name('editVeiculo');
-        Route::post('/excluir/veiculo/{codigo}', [\App\Http\Controllers\VeiculoController::class, 'destroy'])->name('deleteVeiculo');
         Route::any('/pesquisar/veiculo', [\App\Http\Controllers\VeiculoController::class, 'search'])->name('pesquisarVeiculos');
         //
         //VENDAS VEÍCULOS
@@ -41,11 +40,20 @@ Route::group(['middleware' => 'admin'], function(){
         //
         Route::get('/cadastro/entradas', [\App\Http\Controllers\EntradaController::class, 'create'])->name('createEntrada');
         Route::post('/post/cadastro/entradas', [\App\Http\Controllers\EntradaController::class, 'store'])->name('storeEntrada');
+        Route::get('/consultar/entrada', [\App\Http\Controllers\EntradaController::class, 'index'])->name('entradas');
+        Route::any('/pesquisar/entrada', [\App\Http\Controllers\EntradaController::class, 'search'])->name('pesquisarEntradas');
+        Route::put('/editar/entrada/{codigo}', [\App\Http\Controllers\EntradaController::class, 'edit'])->name('editEntrada');
+        Route::post('/excluir/entrada/{codigo}', [\App\Http\Controllers\EntradaController::class, 'destroy'])->name('deleteEntrada');
         //
         //SAÍDAS CAIXA
         //
         Route::get('/cadastro/saidas', [\App\Http\Controllers\SaidaController::class, 'create'])->name('createSaida');
         Route::post('/post/cadastro/saidas', [\App\Http\Controllers\SaidaController::class, 'store'])->name('storeSaida');
+        Route::get('/consultar/saida', [\App\Http\Controllers\SaidaController::class, 'index'])->name('saidas');
+        Route::any('/pesquisar/saida', [\App\Http\Controllers\SaidaController::class, 'search'])->name('pesquisarSaidas');
+        Route::put('/editar/saida/{codigo}', [\App\Http\Controllers\SaidaController::class, 'edit'])->name('editSaida');
+        Route::post('/excluir/saida/{codigo}', [\App\Http\Controllers\SaidaController::class, 'destroy'])->name('deleteSaida');
+
         //
         //RELATÓRIOS
         //

@@ -34,9 +34,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{route('createEntrada')}}"><span class="fas fa-money-bill-alt"></span> Entradas</a>
-                    <a class="dropdown-item" href=""><span class="fas fa-search-plus"></span> Consultar Entradas</a>
+                    <a class="dropdown-item" href="{{route('entradas')}}"><span class="fas fa-search-plus"></span> Consultar Entradas</a>
                     <a class="dropdown-item" href="{{route('createSaida')}}"><span class="fas fa-file-invoice-dollar"></span> Saídas</a>
-                    <a class="dropdown-item" href=""><span class="fas fa-search-minus"></span> Consultar Saídas</a>
+                    <a class="dropdown-item" href="{{route('saidas')}}"><span class="fas fa-search-minus"></span> Consultar Saídas</a>
                 </div>
               </li>
               <li class="nav-item dropdown">

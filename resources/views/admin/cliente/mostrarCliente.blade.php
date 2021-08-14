@@ -115,27 +115,27 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDeleteCliente" tabindex="-1" role="dialog" aria-labelledby="modalDeleteClienteLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modalDeleteClienteLabel">Excluir Cliente?</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="POST" action="{{route('deleteCliente', $cliente->codigoCliente)}}">
-                @csrf
-                <div class="modal-body">
-                    <h5>Nome do Cliente:</h5>
-                    <label for="">{{$cliente->nomeCliente}}</label>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalDeleteClienteLabel">Excluir Cliente?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Excluir</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form method="POST" action="{{route('deleteCliente', $cliente->codigoCliente)}}">
+                    @csrf
+                    <div class="modal-body">
+                        <h5>Nome do Cliente:</h5>
+                        <label for="">{{$cliente->nomeCliente}}</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Excluir</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
                 </div>
-            </form>
             </div>
-        </div>
         </div>
     </div>
     <script src="{{asset('frota/js/fontawesome.js')}}"></script>

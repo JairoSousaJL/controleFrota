@@ -14,6 +14,11 @@ class EntradaController extends Controller
          return view('admin.entrada.registrarEntrada');
     }
 
+    public function index()
+    {
+         return view('admin.entrada.buscarEntrada');
+    }
+
     public function store(StoreEntradaRequest $request){
 
         $dataEntrada = str_replace("/", "-", $request->dataEntrada);
@@ -39,6 +44,40 @@ class EntradaController extends Controller
         }else{
             return redirect()->route('createEntrada');
         }
+    }
+
+    public function search(Request $request){
+
+        $entrada = Entrada::where('codigoEntrada', '=', $request->consultaEntrada)->first();
+
+        if (empty($entrada)) {
+            return redirect()->back()->with('error', 'Entrada Não Encontrado!');
+        }else{
+            return view('admin.entrada.mostrarEntrada', compact('entrada'));
+        }
+    }
+
+    public function edit(Request $request, $codigo){
+        
+        $dataEntrada = str_replace("/", "-", $request->dataEntrada);
+        $dataEntrada = date('Y-m-d', strtotime($dataEntrada));
+
+        $entrada = Entrada::where('codigoEntrada', '=', $codigo)->first();
+        
+        if ($entrada) {
+            $entrada->update([
+                'valorEntrada' => $request->valorEntrada,
+                'descricaoEntrada' => $request->descricaoEntrada,
+                'dataEntrada' => $dataEntrada,
+            ]);
+            return redirect()->route('painel');
+        }
+    }
+
+    public function destroy($codigo){
+        $entrada = Entrada::where('codigoEntrada', '=', $codigo)->first();
+        $entrada->delete();
+        return redirect()->route('painel');
     }
 
 }

@@ -12,6 +12,11 @@ class SaidaController extends Controller
         return view('admin.saida.registrarSaida');
     }
 
+    public function index()
+    {
+         return view('admin.saida.buscarSaida');
+    }
+
     public function store(StoreSaidaRequest $request){
 
         $dataSaida = str_replace("/", "-", $request->dataSaida);
@@ -37,6 +42,40 @@ class SaidaController extends Controller
         }else{
             return redirect()->route('createSaida');
         }
-
     }
+
+    public function search(Request $request){
+
+        $saida = Saida::where('codigoSaida', '=', $request->consultaSaida)->first();
+
+        if (empty($saida)) {
+            return redirect()->back()->with('error', 'Saída Não Encontrado!');
+        }else{
+            return view('admin.saida.mostrarSaida', compact('saida'));
+        }
+    }
+
+    public function edit(Request $request, $codigo){
+        
+        $dataSaida = str_replace("/", "-", $request->dataSaida);
+        $dataSaida = date('Y-m-d', strtotime($dataSaida));
+
+        $saida = Saida::where('codigoSaida', '=', $codigo)->first();
+        
+        if ($saida) {
+            $saida->update([
+                'valorSaida' => $request->valorSaida,
+                'descricaoSaida' => $request->descricaoSaida,
+                'dataSaida' => $dataSaida,
+            ]);
+            return redirect()->route('painel');
+        }
+    }
+
+    public function destroy($codigo){
+        $saida = Saida::where('codigoSaida', '=', $codigo)->first();
+        $saida->delete();
+        return redirect()->route('painel');
+    }
+
 }

@@ -27,6 +27,7 @@ Route::group(['middleware' => 'admin'], function(){
         Route::get('/veiculo/{codigo}', [\App\Http\Controllers\VeiculoController::class, 'show'])->name('showVeiculo');
         Route::put('/editar/veiculo/{codigo}', [\App\Http\Controllers\VeiculoController::class, 'edit'])->name('editVeiculo');
         Route::any('/pesquisar/veiculo', [\App\Http\Controllers\VeiculoController::class, 'search'])->name('pesquisarVeiculos');
+        Route::post('/excluir/veiculo/{codigo}', [\App\Http\Controllers\VeiculoController::class, 'destroy'])->name('deleteVeiculo');
         //
         //VENDAS VEÍCULOS
         //
@@ -62,12 +63,25 @@ Route::group(['middleware' => 'admin'], function(){
         Route::post('/relatorio/entradas', [\App\Http\Controllers\RelatorioController::class, 'gererRelatorioEntrada'])->name('relatorioEntrada');
         Route::post('/relatorio/saidas', [\App\Http\Controllers\RelatorioController::class, 'gererRelatorioSaida'])->name('relatorioSaida');
         //
-        //TRANSAÇÕES
+        //TRANSFERÊNCIAS
         //
         Route::get('/cadastro/transferencia', [\App\Http\Controllers\TransacaoController::class, 'createTransferencia'])->name('createTransferencia');
-        Route::get('/cadastro/comunicado', [\App\Http\Controllers\TransacaoController::class, 'createComunicado'])->name('createComunicado');
         Route::post('/cadastro/transferencia', [\App\Http\Controllers\TransacaoController::class, 'storeTransferencia'])->name('storeTransferencia');
+        Route::get('/consultar/transferencia', [\App\Http\Controllers\TransacaoController::class, 'indexTransferencia'])->name('transferencias');
+        Route::get('/transferencia/{codigo}', [\App\Http\Controllers\TransacaoController::class, 'showTransferencia'])->name('showTransferencia');
+        Route::put('/editar/transferencia/{codigo}', [\App\Http\Controllers\TransacaoController::class, 'editTransferencia'])->name('editTransferencia');
+        Route::post('/excluir/transferencia/{codigo}', [\App\Http\Controllers\TransacaoController::class, 'destroyTransferencia'])->name('deleteTransferencia');
+        Route::any('/pesquisar/transferencia', [\App\Http\Controllers\TransacaoController::class, 'searchTransferencia'])->name('pesquisarTransferencia');
+        //
+        //COMUNICADOS
+        //
+        Route::get('/cadastro/comunicado', [\App\Http\Controllers\TransacaoController::class, 'createComunicado'])->name('createComunicado');
         Route::post('/cadastro/comunicado', [\App\Http\Controllers\TransacaoController::class, 'storeComunicado'])->name('storeComunicado');
+        Route::get('/consultar/comunicado', [\App\Http\Controllers\TransacaoController::class, 'indexComunicado'])->name('comunicados');
+        Route::get('/comunicado/{codigo}', [\App\Http\Controllers\TransacaoController::class, 'showComunicado'])->name('showComunicado');
+        Route::put('/editar/comunicado/{codigo}', [\App\Http\Controllers\TransacaoController::class, 'editComunicado'])->name('editComunicado');
+        Route::post('/excluir/comunicado/{codigo}', [\App\Http\Controllers\TransacaoController::class, 'destroyComunicado'])->name('deleteComunicado');
+        Route::any('/pesquisar/comunicado', [\App\Http\Controllers\TransacaoController::class, 'searchComunicado'])->name('pesquisarComunicado');
         //
         //USUÁRIOS - ADMINISTRADOR
         //

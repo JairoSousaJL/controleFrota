@@ -46,9 +46,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{route('createTransferencia')}}"><span class="fas fa-exchange-alt"></span> Transferências</a>
-                    <a class="dropdown-item" href=""><span class="fas fa-search"></span> Consultar Transferências</a>
+                    <a class="dropdown-item" href="{{route('transferencias')}}"><span class="fas fa-search"></span> Consultar Transferências</a>
                     <a class="dropdown-item" href="{{route('createComunicado')}}"><span class="fas fa-comment-dollar"></span> Comunicado de Vendas</a>
-                    <a class="dropdown-item" href=""><span class="fas fa-search"></span> Consultar Comunicado de Vendas</a>
+                    <a class="dropdown-item" href="{{route('comunicados')}}"><span class="fas fa-search"></span> Consultar Comunicado de Vendas</a>
                 </div>
               </li>
               <li class="nav-item">

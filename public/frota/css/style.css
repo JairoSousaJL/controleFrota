@@ -1,0 +1,29 @@
+/*Dashboard*/
+div.imgdashboard{
+    width: 100%;
+}
+
+.labelCard{
+    color: white;
+    font-weight: bold;
+}
+
+#tabelaSearch tr td{  
+    cursor: pointer; /**importante para não mostrar cursor de texto**/
+    color: black;
+    font-weight: bold;
+  }
+  
+  /**Cor quando passar por cima**/
+  #tabelaSearch tr:hover td{
+    background-color: #8d0505;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /**Cor quando selecionado**/
+  #tabelaSearch tr.selecionado td{
+    background-color: #6b0202;
+    color: white;
+    font-weight: bold;
+  }

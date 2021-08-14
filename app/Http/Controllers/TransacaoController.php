@@ -112,7 +112,7 @@ class TransacaoController extends Controller
 
     public function searchTransferencia(Request $request){
         
-        $transferencias = Transferencia::where('codigoTransferencia', 'LIKE', "%{$request->consultaTransferencia}%")->orWhere('placaVeiculo', 'LIKE', "%{$request->consultaTransferencia}%")->orderBy('dataDespachante')->paginate(7);
+        $transferencias = Transferencia::where('placaVeiculo', 'LIKE', "%{$request->consultaTransferencia}%")->orderBy('dataDespachante')->paginate(7);
 
         if ($transferencias->isEmpty()) {
             return redirect()->back()->with('error', 'Transfência Não Encontrado!');

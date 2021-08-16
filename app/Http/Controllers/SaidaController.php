@@ -49,7 +49,7 @@ class SaidaController extends Controller
         $saida = Saida::where('codigoSaida', '=', $request->consultaSaida)->first();
 
         if (empty($saida)) {
-            return redirect()->back()->with('error', 'Saída Não Encontrado!');
+            return redirect()->back()->with('error', 'Saída Não Encontrada!');
         }else{
             return view('admin.saida.mostrarSaida', compact('saida'));
         }

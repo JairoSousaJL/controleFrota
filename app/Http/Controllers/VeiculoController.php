@@ -86,14 +86,13 @@ class VeiculoController extends Controller
     }
 
     public function search(Request $request){
-        //$filters = $request->all(); (Pega todos os dados)
-        $filters = $request->except('_token');
+
         $veiculos = Veiculo::where('codigoVeiculo', 'LIKE', "%{$request->consultaVeiculo}%")->orWhere('modeloVeiculo', 'LIKE', "%{$request->consultaVeiculo}%")->orderBy('modeloVeiculo')->paginate(3);
 
         if ($veiculos->isEmpty()) {
             return redirect()->back()->with('error', 'Veículo Não Encontrado!');
         }else{
-            return view('admin.veiculo.buscarVeiculo', compact('veiculos', 'filters'));
+            return view('admin.veiculo.buscarVeiculo', compact('veiculos'));
         }
     }
 

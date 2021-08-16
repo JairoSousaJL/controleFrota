@@ -36,6 +36,11 @@
                 </div>
             </div>
         </form>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
     </div>
     <script src="{{asset('frota/js/fontawesome.js')}}"></script>
     <script src="{{asset('frota/js/bootstrap.js')}}"></script>

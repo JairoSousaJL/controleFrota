@@ -123,7 +123,7 @@ class TransacaoController extends Controller
 
     public function searchComunicado(Request $request){
         
-        $comunicados = Comunicado::where('codigoComunicado', 'LIKE', "%{$request->consultaComunicado}%")->orWhere('placaVeiculo', 'LIKE', "%{$request->placaVeiculo}%")->orderBy('dataEnvio')->paginate(7);
+        $comunicados = Comunicado::where('placaVeiculo', 'LIKE', "%{$request->consultaComunicado}%")->orderBy('dataEnvio')->paginate(7);
 
         if ($comunicados->isEmpty()) {
             return redirect()->back()->with('error', 'Comunicado Não Encontrado!');

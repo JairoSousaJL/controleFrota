@@ -84,7 +84,7 @@
                     <a class="btn btn-secondary btn-sm" href=""><span class="fas fa-eraser"></span> Limpar</a>
                 </div>
                 <div class="mb-2 mr-2">
-                    <button type="button" class="btn btn-danger btn-sm"><span class="fas fa-ban"></span> Cancelar</button>
+                    <a href="{{route('painel')}}" class="btn btn-danger btn-sm w-100"> <span class="fas fa-eraser"></span> Cancelar</a>
                 </div>
             </div>
         </form>    

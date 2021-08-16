@@ -117,15 +117,13 @@ class ClienteController extends Controller
 
     public function search(Request $request)
     {
-        //$filters = $request->all(); (Pega todos os dados)
-        //$filters = $request->except('_token'); (Pega todos os dados menos '_token')
-        $filters = $request->except('_token');
+
         $clientes = Cliente::where('nomeCliente', 'LIKE', "%{$request->consultaCliente}%")->orWhere('codigoCliente', 'LIKE', "%{$request->consultaCliente}%")->orWhere('cpfCliente', 'LIKE', "%{$request->consultaCliente}%")->orderBy('nomeCliente')->paginate(10);
+        
         if ($clientes->isEmpty()) {
-            $msg = "Cliente Não Encontrado!";
-            return redirect()->back()->withErrors( $msg )->withInput();
+            return redirect()->back()->with('error', 'Cliente Não Encontrado!');
         }else{
-            return view('admin.cliente.buscarCliente', compact('clientes', 'filters'));
+            return view('admin.cliente.buscarCliente', compact('clientes'));
         }
     }
 }

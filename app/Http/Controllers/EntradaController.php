@@ -51,7 +51,7 @@ class EntradaController extends Controller
         $entrada = Entrada::where('codigoEntrada', '=', $request->consultaEntrada)->first();
 
         if (empty($entrada)) {
-            return redirect()->back()->with('error', 'Entrada Não Encontrado!');
+            return redirect()->back()->with('error', 'Entrada Não Encontrada!');
         }else{
             return view('admin.entrada.mostrarEntrada', compact('entrada'));
         }

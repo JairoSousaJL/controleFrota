@@ -24,7 +24,7 @@ class TransacaoController extends Controller
         return view('admin.transferencia.buscarTransferencia', compact('transferencias'));
     }
 
-    public function indexComunicados(){
+    public function indexComunicado(){
         $comunicados = DB::table('comunicados')->orderBy('dataEnvio')->paginate(7);
         return view('admin.comunicado.buscarComunicado', compact('comunicados'));
     }
@@ -115,7 +115,7 @@ class TransacaoController extends Controller
         $transferencias = Transferencia::where('placaVeiculo', 'LIKE', "%{$request->consultaTransferencia}%")->orderBy('dataDespachante')->paginate(7);
 
         if ($transferencias->isEmpty()) {
-            return redirect()->back()->with('error', 'Transfência Não Encontrado!');
+            return redirect()->back()->with('error', 'Transfência Não Encontrada!');
         }else{
             return view('admin.veiculo.buscarVeiculo', compact('transferencias'));
         }
@@ -187,9 +187,9 @@ class TransacaoController extends Controller
         }
     }
 
-    public function edit(StoreComunicadoRequest $request, $codigo){
+    public function editComunicado(StoreComunicadoRequest $request, $codigo){
 
-        if ($request->dataRecibo != null) {
+        if ($request->dataEnvio != null) {
             $dataEnvio = str_replace("/", "-", $request->dataEnvio);
             $dataEnvio = date('Y-m-d', strtotime($dataEnvio));
         }else{

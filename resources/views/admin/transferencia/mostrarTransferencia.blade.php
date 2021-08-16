@@ -62,7 +62,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><span class="fas fa-calendar-day"></span></span>
                         </div>
+                        @if ($transferencia->dataRecibo != null)
                         <input type="text" class="form-control form-control-sm" id="dataRecibo" name="dataRecibo"  value="{{\Carbon\Carbon::parse($transferencia->dataRecibo)->format('d/m/Y')}}">
+                        @else
+                        <input type="text" class="form-control form-control-sm" id="dataRecibo" name="dataRecibo">
+                        @endif
+                        
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -126,7 +131,7 @@
                     <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#modalDeleteTransferencia"><span class="fas fa-trash-alt"></span> Excluir</button>
                 </div>
                 <div class="mb-2 mr-2">
-                    <a class="btn btn-danger btn-sm" href="{{route('clientes')}}"><span class="fas fa-ban"></span> Voltar</a>
+                    <a class="btn btn-danger btn-sm" href="{{route('transferencias')}}"><span class="fas fa-ban"></span> Voltar</a>
                 </div>
             </div>
         </form>
@@ -146,7 +151,7 @@
                         <h5>Veículo:</h5>
                         <label for="">{{$transferencia->modeloVeiculo}} - {{$transferencia->placaVeiculo}}</label>
                         <h5>Data Despachante:</h5>
-                        <label for="">{{$transferencia->dataDespachante}}</label>
+                        <label for="">{{\Carbon\Carbon::parse($transferencia->dataDespachante)->format('d/m/Y')}}</label>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Excluir</button>

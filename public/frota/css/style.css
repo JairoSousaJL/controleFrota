@@ -27,3 +27,11 @@ div.imgdashboard{
     color: white;
     font-weight: bold;
   }
+
+  input.form-control{
+    text-transform: uppercase;
+  }
+
+  input.form-control::placeholder{
+    font-size: 0.8rem;
+  }

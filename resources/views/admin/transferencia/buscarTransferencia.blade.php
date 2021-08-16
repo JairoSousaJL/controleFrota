@@ -82,7 +82,7 @@
                 <button type="button" class="btn btn-warning btn-sm" id="showTransferencia"> <span class="fas fa-list"></span> Ver</button>
               </div>
               <div class="mb-2 mr-2">
-                <a type="button" class="btn btn-success btn-sm" href="{{route('createTransferencia')}}"><span class="fas fa-save"></span> Novo</a>
+                <a type="button" class="btn btn-success btn-sm" href="{{route('createTransferencia')}}"><span class="fas fa-save"></span> Nova</a>
               </div>
               <div class="mb-2 mr-2">
                 <a type="button" class="btn btn-danger btn-sm" href="{{route('painel')}}"><span class="fas fa-ban"></span> Cancelar</a>

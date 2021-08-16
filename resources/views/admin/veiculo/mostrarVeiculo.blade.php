@@ -127,27 +127,27 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDeleteVeiculo" tabindex="-1" role="dialog" aria-labelledby="modalDeleteVeiculoLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modalDeleteVeiculoLabel">Excluir Veículo?</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="POST" action="{{route('deleteVeiculo', $veiculo->codigoVeiculo)}}">
-                @csrf
-                <div class="modal-body">
-                    <h5>Nome do Veículo:</h5>
-                    <label for="">{{$veiculo->modeloVeiculo}}</label>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalDeleteVeiculoLabel">Excluir Veículo?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Excluir</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form method="POST" action="{{route('deleteVeiculo', $veiculo->codigoVeiculo)}}">
+                    @csrf
+                    <div class="modal-body">
+                        <h5>Nome do Veículo:</h5>
+                        <label for="">{{$veiculo->modeloVeiculo}}</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Excluir</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
                 </div>
-            </form>
             </div>
-        </div>
         </div>
 
     </div>

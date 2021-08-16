@@ -15,18 +15,18 @@
     <div class="container card bg-redCard mt-5">
         <div class="text-white">
             <h4>
-                Pesquisar Veículos
+                Pesquisar Vendas
             </h4>
         </div>
         <hr class="bg-white">
-        <form action="" method="POST" autocomplete="off">
+        <form action="{{route('pesquisarVendas')}}" method="POST" autocomplete="off">
             @csrf
             <div class="form-row mt-2">
                 <div class="col-md-2">
-                    <label class="labelCard" for="consultaVenda">Código ou Modelo</label>
+                    <label class="labelCard" for="consultaVenda">Placa do Veículo:</label>
                 </div>
                 <div class="mb-2 col-md-6">
-                    <input type="text" class="form-control form-control-sm" id="consultaVenda" name="consultaVenda" placeholder="Código ou Modelo do Veículo" required>
+                    <input type="text" class="form-control form-control-sm" id="consultaVenda" name="consultaVenda" placeholder="Placa do Veículo" required>
                 </div>
                 <div class="mb-2 col-md-2">
                   <button type="submit" class="btn btn-primary btn-sm w-100"> <span class="fas fa-search"></span> Pesquisar</button>
@@ -40,7 +40,7 @@
     <div class="container card bg-redCard mt-3">
         <div class="text-white">
             <h4>
-                Veículos
+                Vendas
             </h4>
         </div>
         <hr class="bg-white">
@@ -62,7 +62,7 @@
             <tbody>
                 @foreach ($vendas as $venda)
                 <tr class="table-secondary">
-                  <td class="table-secondary">{{$venda->modeloVeiculo}}</td>
+                  <td class="table-secondary">{{$venda->codigoVenda}}</td>
                   <td class="table-secondary">{{$venda->modeloVeiculo}}</td>
                   <td class="table-secondary">{{$venda->nomeCliente}}</td>
                   <td class="table-secondary">{{$venda->valorVenda}}</td>

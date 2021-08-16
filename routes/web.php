@@ -36,6 +36,8 @@ Route::group(['middleware' => 'admin'], function(){
         Route::get('/consultar/vendas', [\App\Http\Controllers\VendaController::class, 'index'])->name('vendas');
         Route::any('/pesquisar/venda', [\App\Http\Controllers\VendaController::class, 'search'])->name('pesquisarVendas');
         Route::get('/vendas/{codigo}', [\App\Http\Controllers\VendaController::class, 'show'])->name('showVenda');
+        Route::put('/editar/venda/{codigo}', [\App\Http\Controllers\VendaController::class, 'edit'])->name('editVenda');
+        Route::post('/excluir/venda/{codigo}', [\App\Http\Controllers\VendaController::class, 'destroy'])->name('deleteVenda');
         //
         //ENTRADAS CAIXA
         //

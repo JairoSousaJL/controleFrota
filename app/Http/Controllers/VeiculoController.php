@@ -85,12 +85,6 @@ class VeiculoController extends Controller
         }
     }
 
-    public function destroy($codigo){
-        $veiculo = Veiculo::where('codigoVeiculo', '=', $codigo)->first();
-        $veiculo->delete();
-        return redirect()->route('painel');
-    }
-
     public function search(Request $request){
         //$filters = $request->all(); (Pega todos os dados)
         $filters = $request->except('_token');
@@ -101,5 +95,11 @@ class VeiculoController extends Controller
         }else{
             return view('admin.veiculo.buscarVeiculo', compact('veiculos', 'filters'));
         }
+    }
+
+    public function destroy($codigo){
+        $veiculo = Veiculo::where('codigoVeiculo', '=', $codigo)->first();
+        $veiculo->delete();
+        return redirect()->route('painel');
     }
 }

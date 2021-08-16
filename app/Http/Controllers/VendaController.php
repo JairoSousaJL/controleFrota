@@ -60,6 +60,7 @@ class VendaController extends Controller
         if ($editStatusVeiculo) {
             $editStatusVeiculo->update([
                 //status 0 = veículo vendido
+                //status 1 = veículo disponível
                 'statusVeiculo' => '0',
             ]);
         }
@@ -75,26 +76,63 @@ class VendaController extends Controller
         $vendas = DB::table('vendas')
                 ->join('clientes', 'vendas.cliente_id','=', 'clientes.id')
                 ->join('veiculos', 'vendas.veiculo_id', '=', 'veiculos.id')
-                ->select('vendas.codigoVenda', 'clientes.nomeCliente', 'veiculos.modeloVeiculo', 'vendas.valorVenda', 'vendas.observacaoVenda', 'vendas.updated_at')
+                ->select('vendas.codigoVenda', 'clientes.nomeCliente', 'veiculos.modeloVeiculo', 'vendas.valorVenda', 'vendas.dataVenda')
                 ->where('veiculos.placaVeiculo', 'LIKE', "%{$request->consultaVenda}%")
-                ->first();
+                ->paginate(7);
+
         if (empty($vendas)) {
-            //return view('admin.vendas.screenSearchVenda');
-            return redirect()->back()->with('msg', 'Veículo Não Encontrado!');
+            return redirect()->back()->with('msg', 'Venda Não Encontrada!');
         }else{
-            return view('admin.venda.screenShowVenda', compact('vendas'));
+            return view('admin.venda.buscarVenda', compact('vendas'));
         }
     }
 
     public function show($codigo){
         //PESQUISA E MOSTRA A PRIMEIRA VENDA
-        $veiculo = Veiculo::where('codigoVeiculo', '=', $codigo)->first();
-        if ($veiculo) {
+        $venda = DB::table('vendas')
+        ->join('clientes', 'vendas.cliente_id','=', 'clientes.id')
+        ->join('veiculos', 'vendas.veiculo_id', '=', 'veiculos.id')
+        ->select('vendas.codigoVenda', 'clientes.nomeCliente', 'veiculos.modeloVeiculo', 'veiculos.placaVeiculo', 'vendas.valorVenda', 'vendas.dataVenda', 'vendas.observacaoVenda')
+        ->where('vendas.codigoVenda', '=', $codigo)
+        ->first();
+        
+        if ($venda) {
             //SE ENCONTRAR
-            return view('admin.veiculo.mostrarVeiculo', compact('veiculo'));
+            return view('admin.venda.mostrarVenda', compact('venda'));
         }else{
             //SE NÃO ENCONTRAR
-            return redirect()->route('veiculos');
+            return redirect()->route('vendas');
         }
+    }
+
+    public function edit(Request $request, $codigo){
+
+        $dataVenda = str_replace("/", "-", $request->dataVenda);
+        $dataVenda = date('Y-m-d', strtotime($dataVenda));
+
+        $venda = Venda::where('codigoVenda', '=', $codigo)->first();
+
+        if ($venda) {
+            $venda->update([
+                'valorVenda' => $request->valorVenda,
+                'dataVenda' => $dataVenda,
+                'observacaoVenda' => $request->observacaoVenda,
+            ]);
+            return redirect()->route('vendas');
+        }
+    }
+
+    public function destroy($codigo){
+        $venda = Venda::where('codigoVenda', '=', $codigo)->first();
+        
+        $veiculo = Veiculo::where('id', '=', $venda->veiculo_id)->first();
+
+        if ($veiculo) {
+            $veiculo->update([
+                'statusVeiculo' => '1',
+            ]);
+        }
+        $venda->delete();
+        return redirect()->route('painel');
     }
 }

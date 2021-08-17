@@ -53,7 +53,7 @@ class AdministradorController extends Controller
     }
 
     public function index(){
-        $usuarios = DB::table('administradors')->paginate(10);
+        $usuarios = DB::table('administradors')->paginate(7);
         return view('admin.usuario.buscarUsuario', compact('usuarios'));
     }
 

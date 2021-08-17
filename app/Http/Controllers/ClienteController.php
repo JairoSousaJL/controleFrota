@@ -71,7 +71,7 @@ class ClienteController extends Controller
     }
 
     public function index(){
-        $clientes = DB::table('clientes')->orderBy('nomeCliente')->paginate(10);
+        $clientes = DB::table('clientes')->orderBy('nomeCliente')->paginate(7);
         return view('admin.cliente.buscarCliente', compact('clientes'));
     }
 
@@ -87,7 +87,7 @@ class ClienteController extends Controller
         }
     }
 
-    public function edit(StoreClienteRequest $request, $codigo){
+    public function edit(Request $request, $codigo){
         
         $cliente = Cliente::where('codigoCliente', $codigo)->first();
         
@@ -118,7 +118,7 @@ class ClienteController extends Controller
     public function search(Request $request)
     {
 
-        $clientes = Cliente::where('nomeCliente', 'LIKE', "%{$request->consultaCliente}%")->orWhere('codigoCliente', 'LIKE', "%{$request->consultaCliente}%")->orWhere('cpfCliente', 'LIKE', "%{$request->consultaCliente}%")->orderBy('nomeCliente')->paginate(10);
+        $clientes = Cliente::where('nomeCliente', 'LIKE', "%{$request->consultaCliente}%")->orWhere('codigoCliente', 'LIKE', "%{$request->consultaCliente}%")->orWhere('cpfCliente', 'LIKE', "%{$request->consultaCliente}%")->orderBy('nomeCliente')->paginate(7);
         
         if ($clientes->isEmpty()) {
             return redirect()->back()->with('error', 'Cliente Não Encontrado!');

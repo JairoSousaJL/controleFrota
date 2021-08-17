@@ -38,8 +38,8 @@
                     <input type="text" class="form-control form-control-sm" id="rgCliente" name="rgCliente" value= "{{$cliente->rgCliente}}">
                 </div>
                 <div class="col-md-4">
-                    <label class="labelCard" for="nomeCliente">Nome:</label>
-                    <input type="text" class="form-control form-control-sm @error('nomeCliente') is-invalid @enderror" id="nomeCliente" name="nomeCliente" value= "{{$cliente->nomeCliente}}"> </input>
+                    <label class="labelCard" for="nomeCliente">Nome*:</label>
+                    <input type="text" class="form-control form-control-sm @error('nomeCliente') is-invalid @enderror" id="nomeCliente" name="nomeCliente" value= "{{$cliente->nomeCliente}}" required>
                     @error('nomeCliente')
                     <div class="invalid-tooltip">
                             {{$message}}
@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-2">
                     <label class="labelCard" for="bairroCliente">Bairro:</label>
-                    <input type="text" class="form-control form-control-sm @error('bairroCliente') is-invalid @enderror" id="bairroCliente" name="bairroCliente" value= "{{$cliente->bairroCliente}}">
+                    <input type="text" class="form-control form-control-sm @error('bairroCliente') is-invalid @enderror" id="bairroCliente" name="bairroCliente" value= "{{$cliente->bairroCliente}}" required>
                     @error('bairroCliente')
                         <div class="invalid-tooltip">
                             {{$message}}
@@ -82,7 +82,7 @@
                 </div>
                 <div class="col-md-4">
                     <label class="labelCard" for="logradouroCliente">Logradouro:</label>
-                    <input type="text" class="form-control form-control-sm @error('logradouroCliente') is-invalid @enderror" id="logradouroCliente" name="logradouroCliente" value= "{{$cliente->logradouroCliente}}">
+                    <input type="text" class="form-control form-control-sm @error('logradouroCliente') is-invalid @enderror" id="logradouroCliente" name="logradouroCliente" value= "{{$cliente->logradouroCliente}}" required>
                     @error('logradouroCliente')
                         <div class="invalid-tooltip">
                             {{$message}}

@@ -16,7 +16,7 @@ class VeiculoController extends Controller
 
     public function index()
     {
-        $veiculos = DB::table('veiculos')->orderByDesc('statusVeiculo') ->paginate(10);
+        $veiculos = DB::table('veiculos')->orderByDesc('statusVeiculo') ->paginate(7);
         return view('admin.veiculo.buscarVeiculo', compact('veiculos'));
     }
 

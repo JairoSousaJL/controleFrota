@@ -49,7 +49,7 @@
               <tr class="table-dark">
                 <th style="width: 25%" scope="col">Código</th>
                 <th style="width: 50%"scope="col">Nome do Cliente</th>
-                <th style="width: 25%"scope="col">Celular</th>
+                <th style="width: 25%"scope="col">Endereço</th>
               </tr>
             </thead>
             @if (session('error'))
@@ -62,7 +62,7 @@
                 <tr class="table-secondary">
                   <td class="table-secondary" scope="row">{{$cliente->codigoCliente}}</td>
                   <td class="table-secondary">{{$cliente->nomeCliente}}</td>
-                  <td class="table-secondary">{{$cliente->celularCliente}}</td>
+                  <td class="table-secondary">{{$cliente->bairroCliente}} - {{$cliente->logradouroCliente}}</td>
                 </tr>
                 @endforeach
              @endif

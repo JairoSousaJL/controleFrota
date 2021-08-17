@@ -51,17 +51,17 @@ class TransacaoController extends Controller
 
         $transferencia = Transferencia::create([
             'codigoTransferencia' => $codigo,
-            'nomePropAtual' => $request->nomePropAtual,
+            'nomePropAtual' => mb_strtoupper($request->nomePropAtual, 'UTF-8'),
             'cpfPropAtual' => $request->cpfPropAtual,
             'enderecoPropAtual' => $request->enderecoPropAtual,
             'telefonePropAtual' => $request->telefonePropAtual,
-            'nomePropAntigo' => $request->nomePropAntigo,
+            'nomePropAntigo' => mb_strtoupper($request->nomePropAntigo, 'UTF-8'),
             'enderecoPropAntigo' => $request->enderecoPropAntigo,
             'dataRecibo' => $dataRecibo,
             'dataDespachante' => $dataDespachante,
-            'placaVeiculo' => $request->placaVeiculo,
+            'placaVeiculo' => mb_strtoupper($request->placaVeiculo, 'UTF-8'),
             'renavamVeiculo' => $request->renavamVeiculo,
-            'modeloVeiculo' => $request->modeloVeiculo,
+            'modeloVeiculo' => mb_strtoupper($request->modeloVeiculo, 'UTF-8'),
             'valorVeiculo' => $request->valorVeiculo,
         ]);
         
@@ -95,10 +95,10 @@ class TransacaoController extends Controller
 
         $transferencia = Comunicado::create([
             'codigoComunicado' => $codigo,
-            'nomeComprador' => $request->nomeComprador,
-            'nomeVendedor' => $request->nomeVendedor,
-            'placaVeiculo' => $request->placaVeiculo,
-            'modeloVeiculo' => $request->modeloVeiculo,
+            'nomeComprador' => mb_strtoupper($request->nomeComprador, 'UTF-8'),
+            'nomeVendedor' => mb_strtoupper($request->nomeVendedor, 'UTF-8'),
+            'placaVeiculo' => mb_strtoupper($request->placaVeiculo, 'UTF-8'),
+            'modeloVeiculo' => mb_strtoupper($request->modeloVeiculo, 'UTF-8'),
             'dataRecibo' => $dataRecibo,
             'dataEnvio' => $dataEnvio,
         ]);
@@ -170,17 +170,17 @@ class TransacaoController extends Controller
         
         if($transferencia){
             $transferencia->update([
-                'nomePropAtual' => $request->nomePropAtual,
+                'nomePropAtual' => mb_strtoupper($request->nomePropAtual, 'UTF-8'),
                 'cpfPropAtual' => $request->cpfPropAtual,
                 'enderecoPropAtual' => $request->enderecoPropAtual,
                 'telefonePropAtual' => $request->telefonePropAtual,
-                'nomePropAntigo' => $request->nomePropAntigo,
+                'nomePropAntigo' => mb_strtoupper($request->nomePropAntigo, 'UTF-8'),
                 'enderecoPropAntigo' => $request->enderecoPropAntigo,
                 'dataRecibo' => $dataRecibo,
                 'dataDespachante' => $dataDespachante,
-                'placaVeiculo' => $request->placaVeiculo,
+                'placaVeiculo' => mb_strtoupper($request->placaVeiculo, 'UTF-8'),
                 'renavamVeiculo' => $request->renavamVeiculo,
-                'modeloVeiculo' => $request->modeloVeiculo,
+                'modeloVeiculo' => mb_strtoupper($request->modeloVeiculo, 'UTF-8'),
                 'valorVeiculo' => $request->valorVeiculo,
             ]);
             return redirect()->route('transferencias');
@@ -203,10 +203,10 @@ class TransacaoController extends Controller
         
         if($comunicado){
             $comunicado->update([
-                'nomeComprador' => $request->nomeComprador,
-                'nomeVendedor' => $request->nomeVendedor,
-                'placaVeiculo' => $request->placaVeiculo,
-                'modeloVeiculo' => $request->modeloVeiculo,
+                'nomeComprador' => mb_strtoupper($request->nomeComprador, 'UTF-8'),
+                'nomeVendedor' => mb_strtoupper($request->nomeVendedor, 'UTF-8'),
+                'placaVeiculo' => mb_strtoupper($request->placaVeiculo, 'UTF-8'),
+                'modeloVeiculo' => mb_strtoupper($request->modeloVeiculo, 'UTF-8'),
                 'dataRecibo' => $dataRecibo,
                 'dataEnvio' => $dataEnvio,
             ]);

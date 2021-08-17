@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-4">
                     <label class="labelCard" for="nomeAdministrador">Nome*:</label>
-                    <input type="text" class="form-control form-control-sm @error('nomeAdministrador') is-invalid @enderror" id="nomeAdministrador" name="nomeAdministrador" placeholder="Nome do Administrador" value= "{{old('nomeAdministrador')}}">
+                    <input type="text" class="form-control form-control-sm @error('nomeAdministrador') is-invalid @enderror" id="nomeAdministrador" name="nomeAdministrador" placeholder="Somente o primeiro nome" value= "{{old('nomeAdministrador')}}">
                     @error('nomeAdministrador')
                     <div class="invalid-tooltip">
                             {{$message}}

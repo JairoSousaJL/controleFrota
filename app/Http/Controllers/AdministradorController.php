@@ -38,7 +38,7 @@ class AdministradorController extends Controller
         $admin = Administrador::create([
             'codigoAdministrador' => $codigo,
             'cpfAdministrador' => $request->cpfAdministrador,
-            'nomeAdministrador' => $request->nomeAdministrador,
+            'nomeAdministrador' => mb_strtoupper($request->nomeAdministrador, 'UTF-8'),
             'user' => $request->cpfAdministrador,
             'password' => Hash::make('12345678'),
             'statusAdministrador' => true,
@@ -68,7 +68,7 @@ class AdministradorController extends Controller
                 if (Hash::check($request->senhaAtual, $senha)) {
                     $usuario->update([
                         'user' => $request->user,
-                        'nomeAdministrador' => $request->nomeAdministrador,
+                        'nomeAdministrador' => mb_strtoupper($request->nomeAdministrador, 'UTF-8'),
                     ]);
                     return redirect()->route('logoutAdmin');
                 }else{

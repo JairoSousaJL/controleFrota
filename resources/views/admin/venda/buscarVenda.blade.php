@@ -63,10 +63,10 @@
                 @foreach ($vendas as $venda)
                 <tr class="table-secondary">
                   <td class="table-secondary">{{$venda->codigoVenda}}</td>
-                  <td class="table-secondary">{{$venda->modeloVeiculo}}</td>
+                  <td class="table-secondary">{{$venda->modeloVeiculo}} - {{$venda->placaVeiculo}}</td>
                   <td class="table-secondary">{{$venda->nomeCliente}}</td>
                   <td class="table-secondary">{{$venda->valorVenda}}</td>
-                  <td>{{\Carbon\Carbon::parse($venda->dataVenda)->format('d-m-Y')}}</td>
+                  <td>{{\Carbon\Carbon::parse($venda->dataVenda)->format('d/m/Y')}}</td>
                 </tr>
                 @endforeach
              @endif

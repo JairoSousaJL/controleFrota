@@ -109,12 +109,6 @@ class ClienteController extends Controller
         }
     }
 
-    public function destroy($codigo){
-        $cliente = Cliente::where('codigoCliente', '=', $codigo)->first();
-        $cliente->delete();
-        return redirect()->route('painel');
-    }
-
     public function search(Request $request)
     {
 
@@ -125,5 +119,11 @@ class ClienteController extends Controller
         }else{
             return view('admin.cliente.buscarCliente', compact('clientes'));
         }
+    }
+
+    public function destroy($codigo){
+        $cliente = Cliente::where('codigoCliente', '=', $codigo)->first();
+        $cliente->delete();
+        return redirect()->route('painel');
     }
 }

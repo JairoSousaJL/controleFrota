@@ -28,7 +28,7 @@ class VendaController extends Controller
         $vendas = DB::table('vendas')
                 ->join('clientes', 'vendas.cliente_id','=', 'clientes.id')
                 ->join('veiculos', 'vendas.veiculo_id', '=', 'veiculos.id')
-                ->select('vendas.codigoVenda', 'clientes.nomeCliente', 'veiculos.modeloVeiculo', 'vendas.valorVenda', 'vendas.dataVenda')
+                ->select('vendas.codigoVenda', 'clientes.nomeCliente', 'veiculos.modeloVeiculo', 'veiculos.placaVeiculo', 'vendas.valorVenda', 'vendas.dataVenda')
                 ->paginate(7);
 
         return view('admin.venda.buscarVenda', compact('vendas'));
@@ -73,15 +73,14 @@ class VendaController extends Controller
 
     public function search(Request $request)
     {
-        $vendas = DB::table('vendas')
-                ->join('clientes', 'vendas.cliente_id','=', 'clientes.id')
+        $vendas = Venda::join('clientes', 'vendas.cliente_id','=', 'clientes.id')
                 ->join('veiculos', 'vendas.veiculo_id', '=', 'veiculos.id')
                 ->select('vendas.codigoVenda', 'clientes.nomeCliente', 'veiculos.modeloVeiculo', 'vendas.valorVenda', 'vendas.dataVenda')
                 ->where('veiculos.placaVeiculo', 'LIKE', "%{$request->consultaVenda}%")
                 ->paginate(7);
 
-        if (empty($vendas)) {
-            return redirect()->back()->with('msg', 'Venda Não Encontrada!');
+        if ($vendas->isEmpty()) {
+            return redirect()->back()->with('error', 'Venda Não Encontrada!');
         }else{
             return view('admin.venda.buscarVenda', compact('vendas'));
         }

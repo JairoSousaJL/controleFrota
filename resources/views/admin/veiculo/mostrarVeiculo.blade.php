@@ -12,13 +12,6 @@
 </head>
 <body style="background-image:url({{asset('images/bg.png')}}); background-size: 1400px 800px;">
     <x-navbar/>
-    @if ($errors->any())
-            <div class="alert alert-danger mx-auto mt-3" style="max-width: 30rem;">
-                @foreach ($errors->all() as $error)
-                    <label>{{$error}}</label> 
-                @endforeach
-            </div>
-        @endif
     <div class="container card bg-redCard mt-5">
         <div class="labelCard">
             <h4>Dados do Veículos</h4>
@@ -53,7 +46,7 @@
                     @enderror
                 </div>
                 <div class="col-md-2">
-                    <label class="labelCard" for="placaVeiculo">Placa:</label>
+                    <label class="labelCard" for="placaVeiculo">Placa*:</label>
                     <input type="text" class="form-control form-control-sm @error('placaVeiculo') is-invalid @enderror" id="placaVeiculo" name="placaVeiculo" value="{{$veiculo->placaVeiculo}}">
                     @error('placaVeiculo')
                     <div class="invalid-tooltip">
@@ -73,7 +66,7 @@
                     <input type="text" class="form-control form-control-sm" id="marcaVeiculo" name="marcaVeiculo" value="{{$veiculo->marcaVeiculo}}">
                 </div>
                 <div class="col-md-3">
-                    <label class="labelCard" for="modeloVeiculo">Modelo:</label>
+                    <label class="labelCard" for="modeloVeiculo">Modelo*:</label>
                     <input type="text" class="form-control form-control-sm @error('modeloVeiculo') is-invalid @enderror" id="modeloVeiculo" name="modeloVeiculo" value="{{$veiculo->modeloVeiculo}}">
                     @error('modeloVeiculo')
                     <div class="invalid-tooltip">
@@ -123,7 +116,7 @@
                     <a class="btn btn-danger btn-sm" href="{{route('veiculos')}}"><span class="fas fa-ban"></span> Voltar</a>
                 </div>
             </div>
-        </form>   
+        </form>  
 
         <!-- Modal -->
         <div class="modal fade" id="modalDeleteVeiculo" tabindex="-1" role="dialog" aria-labelledby="modalDeleteVeiculoLabel" aria-hidden="true">
@@ -149,8 +142,15 @@
                 </div>
             </div>
         </div>
-
+        @if ($errors->any())
+            <div class="alert alert-danger mx-auto mt-3">
+                @foreach ($errors->all() as $error)
+                    <label>{{$error}}</label> 
+                @endforeach
+            </div>
+        @endif 
     </div>
+   
     <script src="{{asset('frota/js/fontawesome.js')}}"></script>
     <script src="{{asset('frota/js/bootstrap.js')}}"></script>
 </body>

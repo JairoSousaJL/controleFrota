@@ -85,14 +85,14 @@
                 </div>
             </div>
         </form>
+        @if ($errors->any())
+            <div class="alert alert-danger mx-auto mt-3">
+                @foreach ($errors->all() as $error)
+                    <label>{{$error}}</label> 
+                @endforeach
+            </div>
+        @endif
     </div>
-    @if ($errors->any())
-        <div class="alert alert-danger mx-auto mt-3">
-            @foreach ($errors->all() as $error)
-                <label>{{$error}}</label> 
-            @endforeach
-        </div>
-    @endif
     <script src="{{asset('frota/js/fontawesome.js')}}"></script>
     <script src="{{asset('frota/js/bootstrap.js')}}"></script>
 </body>

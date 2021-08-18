@@ -28,7 +28,7 @@
               @foreach ($relatorios as $relatorio)
               {{$total = $total + $relatorio->valorEntrada}}
               <tr>
-                <td>{{\Carbon\Carbon::parse($relatorio->dataEntrada)->format('d-m-Y')}}</td>
+                <td>{{\Carbon\Carbon::parse($relatorio->dataEntrada)->format('d/m/Y')}}</td>
                 <td>{{$relatorio->valorEntrada}}</td>
                 <td>{{$relatorio->descricaoEntrada}}</td>
               </tr>

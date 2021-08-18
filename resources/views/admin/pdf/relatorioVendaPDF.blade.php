@@ -27,7 +27,7 @@
             <tbody>
               @foreach ($relatorios as $relatorio)
               <tr>
-                <td>{{\Carbon\Carbon::parse($relatorio->dataVenda)->format('d-m-Y')}}</td>
+                <td>{{\Carbon\Carbon::parse($relatorio->dataVenda)->format('d/m/Y')}}</td>
                 <td>{{$relatorio->modeloVeiculo}}</td>
                 <td>{{$relatorio->nomeCliente}}</td>
                 <td>R$ {{$relatorio->valorVenda}}</td>

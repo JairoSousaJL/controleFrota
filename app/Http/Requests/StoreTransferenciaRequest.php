@@ -25,7 +25,7 @@ class StoreTransferenciaRequest extends FormRequest
     {
         return [
             'cpfPropAtual' => 'cpf|nullable',
-            'dataDespachante' => 'required|date',
+            'dataDespachante' => 'required',
             'placaVeiculo' => 'required|max:7|min:7',
             'renavamVeiculo' => 'numeric|nullable',
             'valorVeiculo' => 'numeric|nullable',
@@ -36,7 +36,6 @@ class StoreTransferenciaRequest extends FormRequest
         return [
             'cpfPropAtual.cpf' => 'CPF invlálido!',
             'dataDespachante.required' => 'O campo Data Despachante é Obrigatório!',
-            'dataDespachante.date' => 'Data inválida!',
             'placaVeiculo.required' => 'O campo Placa é obrigatório!',
             'placaVeiculo.max' => 'Placa Inválida!',
             'placaVeiculo.min' => 'Placa Inválida!',

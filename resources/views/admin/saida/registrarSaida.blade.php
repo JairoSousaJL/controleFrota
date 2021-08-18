@@ -40,7 +40,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><span class="fas fa-dollar-sign"></span></span>
                         </div>
-                        <input type="text" class="form-control form-control-sm @error('valorSaida') is-invalid @enderror" id="valorSaida" name="valorSaida" placeholder="Valor">
+                        <input type="text" class="form-control form-control-sm @error('valorSaida') is-invalid @enderror" id="valorSaida" name="valorSaida" placeholder="Valor" value= "{{old('valorSaida')}}">
                         @error('valorSaida')
                             <div class="invalid-tooltip">
                                 {{$message}}

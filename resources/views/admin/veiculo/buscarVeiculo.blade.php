@@ -23,16 +23,16 @@
             @csrf
             <div class="form-row mt-2">
                 <div class="col-md-2">
-                    <label class="labelCard" for="consultaVeiculo">Código ou Modelo</label>
+                    <label class="labelCard" for="consultaVeiculo">Código ou Modelo:</label>
                 </div>
                 <div class="mb-2 col-md-6">
-                    <input type="text" class="form-control form-control-sm" id="consultaVeiculo" name="consultaVeiculo" placeholder="Código ou Modelo do Veículo" required>
+                    <input type="text" class="form-control form-control-sm" id="consultaVeiculo" name="consultaVeiculo" placeholder="Código ou Modelo ou Placa do Veículo" required>
                 </div>
                 <div class="mb-2 col-md-2">
                   <button type="submit" class="btn btn-primary btn-sm w-100"> <span class="fas fa-search"></span> Pesquisar</button>
                 </div>
                 <div class="mb-2 col-md-2">
-                    <a href="" class="btn btn-danger btn-sm w-100"> <span class="fas fa-eraser"></span> Limpar Filtros</a>
+                    <a href="{{route('veiculos')}}" class="btn btn-danger btn-sm w-100"> <span class="fas fa-eraser"></span> Limpar Filtros</a>
                 </div>
             </div>
         </form>

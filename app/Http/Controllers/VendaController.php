@@ -75,7 +75,7 @@ class VendaController extends Controller
     {
         $vendas = Venda::join('clientes', 'vendas.cliente_id','=', 'clientes.id')
                 ->join('veiculos', 'vendas.veiculo_id', '=', 'veiculos.id')
-                ->select('vendas.codigoVenda', 'clientes.nomeCliente', 'veiculos.modeloVeiculo', 'vendas.valorVenda', 'vendas.dataVenda')
+                ->select('vendas.codigoVenda', 'clientes.nomeCliente', 'veiculos.modeloVeiculo', 'veiculos.placaVeiculo', 'vendas.valorVenda', 'vendas.dataVenda')
                 ->where('veiculos.placaVeiculo', 'LIKE', "%{$request->consultaVenda}%")
                 ->paginate(7);
 

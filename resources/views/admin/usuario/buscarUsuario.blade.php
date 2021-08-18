@@ -12,7 +12,7 @@
 </head>
 <body style="background-image:url({{asset('images/bg.png')}}); background-size: 1400px 800px;">
     <x-navbar/>
-    <div class="container card bg-redCard mt-3">
+    <div class="container card bg-redCard mt-5">
         <div class="text-white">
             <h4>
                 Administradores
@@ -23,7 +23,7 @@
             <thead class="thead-dark">
               <tr class="table-dark">
                 <th style="width: 25%" scope="col">Código</th>
-                <th style="width: 50%"scope="col">Nome do Administradore</th>
+                <th style="width: 50%"scope="col">Nome do Administrador</th>
                 <th style="width: 25%"scope="col">Status</th>
               </tr>
             </thead>

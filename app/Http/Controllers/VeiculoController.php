@@ -87,7 +87,7 @@ class VeiculoController extends Controller
 
     public function search(Request $request){
 
-        $veiculos = Veiculo::where('codigoVeiculo', 'LIKE', "%{$request->consultaVeiculo}%")->orWhere('modeloVeiculo', 'LIKE', "%{$request->consultaVeiculo}%")->orderBy('modeloVeiculo')->paginate(3);
+        $veiculos = Veiculo::where('codigoVeiculo', 'LIKE', "%{$request->consultaVeiculo}%")->orWhere('modeloVeiculo', 'LIKE', "%{$request->consultaVeiculo}%")->orWhere('placaVeiculo', 'LIKE', "%{$request->consultaVeiculo}%")->orderBy('modeloVeiculo')->paginate(3);
 
         if ($veiculos->isEmpty()) {
             return redirect()->back()->with('error', 'Veículo Não Encontrado!');

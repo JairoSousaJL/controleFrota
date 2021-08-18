@@ -42,9 +42,6 @@
                             Entrar
                         </button>
                     </div>
-                    <div class="mt-2" align="center">
-                        <a href="#" class="text-white">SISTEMA PARA CONTROLE DE FROTA </a>
-                    </div>
                 </form>
             </div>
           </div>

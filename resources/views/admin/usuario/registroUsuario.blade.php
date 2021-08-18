@@ -16,6 +16,7 @@
         <div class="labelCard">
             <h4>Cadastro de Usuários</h4>
         </div>
+        <hr class="bg-white">
         <form method="POST" action="{{route('storeAdmin')}}" autocomplete="off">
             @csrf
             <div class="form-row mt-4">

@@ -18,9 +18,10 @@
         <table class="table table-bordered">
             <thead>
               <tr>
-                <th style="width: 20%" scope="col">Data Saída</th>
-                <th style="width: 20%"scope="col">Valor Saída</th>
-                <th style="width: 60%"scope="col">Descrição Saída</th>
+                <th style="width: 15%" scope="col">Código Saída</th>
+                <th style="width: 15%" scope="col">Data Saída</th>
+                <th style="width: 15%"scope="col">Valor Saída</th>
+                <th style="width: 55%"scope="col">Descrição Saída</th>
               </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
               @foreach ($relatorios as $relatorio)
               {{$total = $total + $relatorio->valorSaida}}
               <tr>
+                <td>{{$relatorio->codigoSaida}}</td>
                 <td>{{\Carbon\Carbon::parse($relatorio->dataSaida)->format('d/m/Y')}}</td>
                 <td>{{$relatorio->valorSaida}}</td>
                 <td>{{$relatorio->descricaoSaida}}</td>
